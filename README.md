@@ -1,6 +1,7 @@
 # SuhaaTechAdsLibProject
 
 1-	Add Repository:
+
 		repositories {
 			maven { url 'https://jitpack.io' }
 		}
