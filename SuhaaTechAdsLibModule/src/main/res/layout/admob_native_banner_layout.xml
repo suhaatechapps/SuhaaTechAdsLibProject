@@ -5,7 +5,7 @@
     android:padding="4dp">
 
 
-    <com.zee.suhaatechadslibmodule.templates.TrueTemplateView
+    <com.zee.suhaatechadslibmodule.mediation.templates.TrueTemplateView
         android:id="@+id/my_template"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

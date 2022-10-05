@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
 
-    <com.zee.suhaatechadslibmodule.templates.TrueBannerTemplateView
+    <com.zee.suhaatechadslibmodule.mediation.templates.TrueBannerTemplateView
         android:id="@+id/my_template"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
