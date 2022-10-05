@@ -8,5 +8,5 @@
 
 2-	Add Library:
 
-  		implementation 'com.github.suhaatechapps:SuhaaTechAdsLibProject:Tag'
+  		implementation 'com.github.suhaatechapps:SuhaaTechAdsLibProject:9.1.0.1'
 	
