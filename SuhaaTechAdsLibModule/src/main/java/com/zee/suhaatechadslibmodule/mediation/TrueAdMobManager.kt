@@ -15,7 +15,6 @@ import android.util.Log
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
@@ -312,8 +311,6 @@ class TrueAdMobManager(
                                 interstitialAd.fullScreenContentCallback =
                                     object : FullScreenContentCallback() {
                                         override fun onAdDismissedFullScreenContent() {
-                                            Toast.makeText(context,"Ad Dismissed"+targetDestination,Toast.LENGTH_SHORT).show()
-                                            Log.d(TAG, "onAdDismissedFullScreenContent:  Ad Dismissed")
                                             zInterCallbacksInAdvance?.zOnAddDismissed(
                                                 TrueAdsType.Z_ADMOB
                                             )
