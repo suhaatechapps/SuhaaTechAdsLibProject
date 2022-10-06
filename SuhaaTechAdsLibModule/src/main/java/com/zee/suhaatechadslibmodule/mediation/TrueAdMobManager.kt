@@ -312,7 +312,7 @@ class TrueAdMobManager(
                                 interstitialAd.fullScreenContentCallback =
                                     object : FullScreenContentCallback() {
                                         override fun onAdDismissedFullScreenContent() {
-                                            Toast.makeText(context,"Ad Dismissed",Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(context,"Ad Dismissed"+targetDestination,Toast.LENGTH_SHORT).show()
                                             Log.d(TAG, "onAdDismissedFullScreenContent:  Ad Dismissed")
                                             zInterCallbacksInAdvance?.zOnAddDismissed(
                                                 TrueAdsType.Z_ADMOB
