@@ -236,7 +236,7 @@ class FaceBookAdManager(private var context: Context) {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.MATCH_PARENT
+            WindowManager.LayoutParams.WRAP_CONTENT
         )
         loadAdsLayoutBinding.tvMessage.text =
             TrueAdManager.context.resources.getString(R.string.loading_ad)
