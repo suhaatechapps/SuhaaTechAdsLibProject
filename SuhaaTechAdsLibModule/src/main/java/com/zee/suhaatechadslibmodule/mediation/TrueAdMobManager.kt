@@ -286,6 +286,93 @@ class TrueAdMobManager(
         }
     }
 
+    @SuppressLint("BinaryOperationInTimber")
+    fun zLoadAndShowInterstitialAdWithIntent(
+        context: Activity,
+        interId: String,
+        destination: Class<*>
+    ) {
+        dialog = Dialog(context)
+        loadAds(context)
+        CoroutineScope(Dispatchers.Main).launch {
+            var zCallBackCalled = false
+            dialog.show()
+            /** it will be executed when its true*/
+            val adRequest = AdRequest.Builder().build()
+            Handler(Looper.getMainLooper()).postDelayed(
+                {
+                    TrueZSPRepository.setAdAvailableValue(context, true)
+                    InterstitialAd.load(
+                        zContext!!,
+                        interId,
+                        adRequest,
+                        object : InterstitialAdLoadCallback() {
+                            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                                this@TrueAdMobManager.zInterstitialAd = interstitialAd
+                                TrueZSPRepository.setAdAvailableValue(context, true)
+                                interstitialAd.fullScreenContentCallback =
+                                    object : FullScreenContentCallback() {
+                                        override fun onAdDismissedFullScreenContent() {
+                                            zInterCallbacks?.zOnAddDismissed(TrueAdsType.Z_ADMOB)
+                                            zCallBackCalled = true
+                                            context.startActivity(Intent(context, destination))
+                                        }
+
+                                        override fun onAdFailedToShowFullScreenContent(
+                                            adError: AdError
+                                        ) {
+                                            zInterCallbacks?.zOnAdFailedToShowFullContent(
+                                                zAdType = TrueAdsType.Z_ADMOB,
+                                                zError = TrueError(
+                                                    zMessage = adError.message,
+                                                    zCode = adError.code,
+                                                    zDomain = adError.domain,
+                                                )
+                                            )
+                                            zCallBackCalled = true
+                                        }
+
+                                        override fun onAdShowedFullScreenContent() {
+                                            zInterCallbacks?.zOnAddShowed(TrueAdsType.Z_ADMOB)
+                                            zCallBackCalled = true
+                                            zInterstitialAd = null
+                                        }
+
+                                        override fun onAdClicked() {
+                                            super.onAdClicked()
+                                        }
+                                    }
+                                zInterCallbacks?.zOnAddLoaded(zAdType = TrueAdsType.Z_ADMOB)
+                                zCallBackCalled = true
+                                interstitialAd.show(context)
+                                Handler(Looper.getMainLooper()).postDelayed({
+                                    dialog.dismiss()
+                                }, 500)
+                            }
+
+                            override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                                zInterCallbacks?.zOnAdFailedToLoad(
+                                    zAdType = TrueAdsType.Z_ADMOB,
+                                    zError = TrueError(
+                                        zMessage = loadAdError.message,
+                                        zCode = loadAdError.code,
+                                        zDomain = loadAdError.domain,
+                                    )
+                                )
+                                dialog.dismiss()
+                                zCallBackCalled = true
+                            }
+                        }
+                    )
+                    if (zCallBackCalled.not()) {
+                        zInterCallbacks?.zOnAdTimedOut(TrueAdsType.Z_ADMOB)
+                    }
+                },
+                0
+            )
+        }
+    }
+
     fun zLoadInterstitialInAdvance(
         context: Activity,
         interId: String

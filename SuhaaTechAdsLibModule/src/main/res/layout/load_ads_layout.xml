@@ -18,9 +18,22 @@
             android:id="@+id/pbLoading"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="100dp"
-            android:indeterminateTint="@color/black"
+            android:layout_marginTop="15dp"
+            android:indeterminateTint="#03A9F4"
+            app:layout_constraintStart_toStartOf="@+id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20dp"
+            android:text="Please Wait."
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,10 +42,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:text="@string/loading_ad"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/pbLoading"
+            android:text="Please wait Full screen Ad is expected to show."
+            android:textColor="#757474"
+            android:layout_marginEnd="@dimen/_30dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/pbLoading"
             app:layout_constraintTop_toTopOf="@+id/pbLoading" />

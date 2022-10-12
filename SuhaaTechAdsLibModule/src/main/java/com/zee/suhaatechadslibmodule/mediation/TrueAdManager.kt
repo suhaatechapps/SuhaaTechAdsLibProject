@@ -6,7 +6,6 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import com.zee.suhaatechadslibmodule.facebook.FaceBookAdManager
-import com.zee.suhaatechadslibmodule.mediation.interfaces.TrueAdCallBackInterface
 import com.zee.suhaatechadslibmodule.mediation.callbacks.TrueAdCallbacks
 import com.zee.suhaatechadslibmodule.mediation.callbacks.TrueInterCallbacks
 import com.zee.suhaatechadslibmodule.mediation.customadview.TrueZBannerView
@@ -14,6 +13,7 @@ import com.zee.suhaatechadslibmodule.mediation.customadview.TrueZNativeAdvancedV
 import com.zee.suhaatechadslibmodule.mediation.customadview.TrueZNativeBannerFlippingView
 import com.zee.suhaatechadslibmodule.mediation.customadview.TrueZNativeBannerSimpleView
 import com.zee.suhaatechadslibmodule.mediation.fallbackstrategies.TrueAdMobFallbackTrueStrategy
+import com.zee.suhaatechadslibmodule.mediation.interfaces.TrueAdCallBackInterface
 import com.zee.suhaatechadslibmodule.mediation.types.TrueAdPriorityType
 import com.zee.suhaatechadslibmodule.mediation.types.TrueAdPriorityType.*
 import com.zee.suhaatechadslibmodule.mediation.types.TrueAdsType
@@ -178,6 +178,19 @@ object TrueAdManager : TrueAdCallBackInterface {
         }
     }
 
+    /**Load Interstitial Ads With Intent*/
+    fun zLoadAndShowInterstitialAdWithIntent(
+        activity: Activity,
+        adsId: String,
+        destination: Class<*>
+    ) {
+        if (TrueConstants.isNetworkSpeedHigh()) {
+            zAdMobManager?.zLoadAndShowInterstitialAdWithIntent(
+                activity, adsId, destination
+            )
+        }
+    }
+
     /**Load Interstitial Ad In Advance*/
     fun zLoadInterstitialInAdvance(
         context: Activity,
@@ -216,6 +229,29 @@ object TrueAdManager : TrueAdCallBackInterface {
 
     /**Show Interstitial Ad In Advance*/
     fun zShowInterstitialInAdvanceWithOutIntent(
+        context: Activity
+    ) {
+        if (TrueConstants.isNetworkSpeedHigh()) {
+            zAdMobManager?.zShowInterstitialAdInAdvanceWithOutIntent(
+                context
+            )
+        }
+    }
+
+    /**Load Interstitial Ad In Advance*/
+    fun zLoadInterstitialInAdvanceWithIntent(
+        context: Activity,
+        adId: String
+    ) {
+        if (TrueConstants.isNetworkSpeedHigh()) {
+            zAdMobManager?.zLoadInterstitialInAdvanceWithOutIntent(
+                context, adId
+            )
+        }
+    }
+
+    /**Show Interstitial Ad In Advance*/
+    fun zShowInterstitialInAdvanceWithIntent(
         context: Activity
     ) {
         if (TrueConstants.isNetworkSpeedHigh()) {
