@@ -480,6 +480,7 @@ class TrueAdMobManager(
                 dialog.dismiss()
                 interstitialAdnValue = if (zInterstitialAdInAdvance != null) {
                     zInterstitialAdInAdvance?.show(context)
+                    context.startActivity(Intent(context, destination))
                     false
                 } else {
                     true
