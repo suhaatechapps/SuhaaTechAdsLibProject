@@ -554,7 +554,7 @@ class TrueAdMobManager(
                                 context.startActivity(
                                     Intent(
                                         context,
-                                        targetDestination
+                                        destination
                                     )
                                 )
                                 zInterCallbacksInAdvance?.zOnAddDismissed(
