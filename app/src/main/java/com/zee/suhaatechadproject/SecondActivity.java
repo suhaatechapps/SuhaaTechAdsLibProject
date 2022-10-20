@@ -15,5 +15,6 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySecondBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        TrueAdManager.INSTANCE.zShowInterstitialInAdvance(this,MainActivity.class);
     }
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_20dp"
+    tools:context=".SetPrefValueAct">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Ads Value"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/clickET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5dp"
+        android:hint="Enter Click Counter"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/impressionsET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5dp"
+        android:hint="Enter Impressions Counter"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/delayMsET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5dp"
+        android:hint="Enter Delays"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/banHoursET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5dp"
+        android:hint="Enter Ban Hour"
+        android:inputType="number" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/_5dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Update" />
+    </LinearLayout>
+</LinearLayout>
